@@ -33,15 +33,13 @@ Este é um projeto de aplicação de consola em C#, com ligação a uma base de 
 ```
 📁 BibliotecaConsoleApp/
 ├── Program.cs               # Interface no terminal (menu)
-├── Models/
-│   ├── Livro.cs
-│   ├── Usuario.cs
-│   └── Emprestimo.cs
-├── DAL/
-│   ├── ConexaoBD.cs
-│   ├── LivroDAL.cs
-│   ├── UsuarioDAL.cs
-│   └── EmprestimoDAL.cs
+├── Livro.cs
+├── Usuario.cs
+├── Emprestimo.cs
+├── ConexaoBD.cs
+├── LivroDAL.cs
+├── UsuarioDAL.cs
+└── EmprestimoDAL.cs
 └── README.md
 ```
 
