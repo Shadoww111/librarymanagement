@@ -6,14 +6,20 @@ using System.Threading.Tasks;
 
 namespace BibliotecaConsole
 {
- 
-      
-        public class Usuario
+
+    public class Usuario : Pessoa
+    {
+        private string tipo;
+
+        public int UsuarioID { get; set; }
+        public override string Tipo => tipo;
+
+        public Usuario(string tipo)
         {
-            public int UsuarioID { get; set; }
-            public string Nome { get; set; }
-            public int Idade { get; set; }
-            public string Tipo { get; set; } // Cliente, Rececao, Admin
+            this.tipo = tipo;
         }
-    
+
+        public Usuario() { }
+    }
+
 }

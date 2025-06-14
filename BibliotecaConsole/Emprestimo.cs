@@ -14,9 +14,16 @@ namespace BibliotecaConsole
         public DateTime DataEmprestimo { get; set; }
         public DateTime? DataDevolucao { get; set; }
 
-        public int DiasAtraso => DataDevolucao.HasValue && (DataDevolucao.Value - DataEmprestimo).Days > 5
-            ? (DataDevolucao.Value - DataEmprestimo).Days - 5 : 0;
-
+        public int DiasAtraso => DataDevolucao.HasValue && (DataDevolucao.Value - DataEmprestimo).Days > 5 ? (DataDevolucao.Value - DataEmprestimo).Days - 5 : 0;
         public decimal Multa => DiasAtraso * 1.0m;
+
+        public Emprestimo(int livroId, int usuarioId)
+        {
+            LivroID = livroId;
+            UsuarioID = usuarioId;
+            DataEmprestimo = DateTime.Now;
+            DataDevolucao = null;
+        }
     }
+
 }
