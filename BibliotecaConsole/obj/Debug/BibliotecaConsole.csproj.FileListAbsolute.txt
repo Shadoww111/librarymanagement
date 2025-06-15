@@ -1,7 +1,0 @@
-C:\Users\Pedro\Documents\GitHub\librarymanagement\BibliotecaConsole\bin\Debug\BibliotecaConsole.exe.config
-C:\Users\Pedro\Documents\GitHub\librarymanagement\BibliotecaConsole\bin\Debug\BibliotecaConsole.exe
-C:\Users\Pedro\Documents\GitHub\librarymanagement\BibliotecaConsole\bin\Debug\BibliotecaConsole.pdb
-C:\Users\Pedro\Documents\GitHub\librarymanagement\BibliotecaConsole\obj\Debug\BibliotecaConsole.csproj.AssemblyReference.cache
-C:\Users\Pedro\Documents\GitHub\librarymanagement\BibliotecaConsole\obj\Debug\BibliotecaConsole.csproj.CoreCompileInputs.cache
-C:\Users\Pedro\Documents\GitHub\librarymanagement\BibliotecaConsole\obj\Debug\BibliotecaConsole.exe
-C:\Users\Pedro\Documents\GitHub\librarymanagement\BibliotecaConsole\obj\Debug\BibliotecaConsole.pdb

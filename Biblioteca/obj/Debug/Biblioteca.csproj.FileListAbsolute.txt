@@ -1,0 +1,7 @@
+C:\Users\Pedro\Documents\GitHub\librarymanagement\Biblioteca\obj\Debug\Biblioteca.csproj.AssemblyReference.cache
+C:\Users\Pedro\Documents\GitHub\librarymanagement\Biblioteca\obj\Debug\Biblioteca.csproj.CoreCompileInputs.cache
+C:\Users\Pedro\Documents\GitHub\librarymanagement\Biblioteca\bin\Debug\Biblioteca.exe.config
+C:\Users\Pedro\Documents\GitHub\librarymanagement\Biblioteca\bin\Debug\Biblioteca.exe
+C:\Users\Pedro\Documents\GitHub\librarymanagement\Biblioteca\bin\Debug\Biblioteca.pdb
+C:\Users\Pedro\Documents\GitHub\librarymanagement\Biblioteca\obj\Debug\Biblioteca.exe
+C:\Users\Pedro\Documents\GitHub\librarymanagement\Biblioteca\obj\Debug\Biblioteca.pdb
