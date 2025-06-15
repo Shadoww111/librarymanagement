@@ -61,7 +61,7 @@
     <Compile Include="Sistema\SistemaBiblioteca.cs" />
     <Compile Include="UI\MenuAdmin.cs" />
     <Compile Include="UI\MenuCliente.cs" />
-    <Compile Include="UI\MenuRecepcao.cs" />
+    <Compile Include="UI\MenuRececao.cs" />
     <Compile Include="UI\Menus.cs" />
   </ItemGroup>
   <ItemGroup>

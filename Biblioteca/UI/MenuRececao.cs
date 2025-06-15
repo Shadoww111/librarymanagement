@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Biblioteca.UI
 {
-    internal class MenuRecepcao
+    internal class MenuRececao
     {
     }
 }
