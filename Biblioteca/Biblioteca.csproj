@@ -43,11 +43,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\DatabaseManager.cs" />
+    <Compile Include="Enums\StatusEmprestimo.cs" />
+    <Compile Include="Enums\TipoUsuario.cs" />
+    <Compile Include="Modelos\Emprestimo.cs" />
+    <Compile Include="Modelos\Livro.cs" />
+    <Compile Include="Modelos\Pessoa.cs" />
+    <Compile Include="Modelos\Usuario.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorios\RepositorioBase.cs" />
+    <Compile Include="Repositorios\RepositorioEmprestimos.cs" />
+    <Compile Include="Repositorios\RepositorioLivros.cs" />
+    <Compile Include="Repositorios\RepositorioUsuarios.cs" />
+    <Compile Include="Servicos\ServicoAutenticacao.cs" />
+    <Compile Include="Servicos\ServicoEmprestimos.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Sistema\" />
+    <Folder Include="UI\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
