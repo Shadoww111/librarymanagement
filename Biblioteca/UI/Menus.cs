@@ -4,13 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Biblioteca.Enums
+namespace Biblioteca.UI
 {
-    public enum TipoUsuario
+    internal class Menus
     {
-        Cliente = 1,
-        Recepcao = 2,
-        Admin = 3
     }
-
 }

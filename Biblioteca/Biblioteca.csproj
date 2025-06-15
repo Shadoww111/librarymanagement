@@ -58,13 +58,15 @@
     <Compile Include="Repositorios\RepositorioUsuarios.cs" />
     <Compile Include="Servicos\ServicoAutenticacao.cs" />
     <Compile Include="Servicos\ServicoEmprestimos.cs" />
+    <Compile Include="Sistema\SistemaBiblioteca.cs" />
+    <Compile Include="UI\MenuAdmin.cs" />
+    <Compile Include="UI\MenuCliente.cs" />
+    <Compile Include="UI\MenuRecepcao.cs" />
+    <Compile Include="UI\Menus.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Sistema\" />
-    <Folder Include="UI\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

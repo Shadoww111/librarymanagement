@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Biblioteca.Enums
 {
-    internal class StatusEmprestimo
+    public enum StatusEmprestimo
     {
+        Ativo = 1,
+        Devolvido = 2,
+        Atrasado = 3
     }
 }
