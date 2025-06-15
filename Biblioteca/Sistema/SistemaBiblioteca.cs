@@ -940,7 +940,7 @@ namespace Biblioteca.Sistema
         }
         private void MenuContinuar()
         {
-            Console.WriteLine("\n═══ CLIQUE PARA VOLTAR ═══");
+            Console.WriteLine("\n═══ CLIQUE PARA CONTINUAR ═══");
             Console.ReadLine();
 
         }
