@@ -182,7 +182,10 @@ namespace Biblioteca.Sistema
         private void MostrarMenuPrincipal()
         {
             Console.Clear();
-            Console.WriteLine($"\n═══ MENU PRINCIPAL - {usuarioLogado.Nome} ({usuarioLogado.Tipo}) ═══");
+            Console.WriteLine("╔══════════════════════════════════════╗");
+            Console.WriteLine("║            MENU PRINCIPAL            ║");
+            Console.WriteLine("╚══════════════════════════════════════╝");
+            Console.WriteLine($"Ola, {usuarioLogado.Nome} ({usuarioLogado.Tipo})\n");
 
             switch (usuarioLogado.Tipo)
             {
