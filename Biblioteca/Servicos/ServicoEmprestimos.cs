@@ -81,7 +81,7 @@ namespace Biblioteca.Servicos
                 }
 
                 string mensagem = multa > 0 ?
-                    $"Livro devolvido com multa de €{multa:F2} por atraso." :
+                    $"Livro devolvido com multa de {multa:F2} Euros por atraso." :
                     "Livro devolvido no prazo!";
 
                 return (true, mensagem, multa);

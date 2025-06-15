@@ -45,7 +45,7 @@ namespace Biblioteca.Modelos
 
         public override void ExibirInformacoes()
         {
-            Console.WriteLine($"ID: {Id} | Nome: {Nome} | Email: {Email} | Tipo: {Tipo} | Idade: {Idade} | Multa: €{MultaTotal:F2}");
+            Console.WriteLine($"ID: {Id} | Nome: {Nome} | Email: {Email} | Tipo: {Tipo} | Idade: {Idade} | Multa: {MultaTotal:F2} Euros");
         }
     }
 }

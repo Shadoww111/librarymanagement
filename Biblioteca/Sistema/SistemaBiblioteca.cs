@@ -8,6 +8,7 @@ using Biblioteca.Enums;
 using Biblioteca.Modelos;
 using Biblioteca.Data;
 using Biblioteca.Servicos;
+using System.Threading;
 
 namespace Biblioteca.Sistema
 {
@@ -52,11 +53,8 @@ namespace Biblioteca.Sistema
 
         public void Iniciar()
         {
-            Console.WriteLine("╔══════════════════════════════════════╗");
-            Console.WriteLine("║     SISTEMA DE GESTÃO BIBLIOTECA     ║");
-            Console.WriteLine("╚══════════════════════════════════════╝");
-            Console.WriteLine();
-
+            Console.Clear();
+   
             while (true)
             {
                 if (usuarioLogado == null)
@@ -72,6 +70,12 @@ namespace Biblioteca.Sistema
 
         private void MenuLoginRegistro()
         {
+            Console.Clear();
+            Console.WriteLine("╔══════════════════════════════════════╗");
+            Console.WriteLine("║     SISTEMA DE GESTÃO BIBLIOTECA     ║");
+            Console.WriteLine("╚══════════════════════════════════════╝");
+            Console.WriteLine();
+
             Console.WriteLine("\n═══ AUTENTICAÇÃO ═══");
             Console.WriteLine("1. Login");
             Console.WriteLine("2. Registrar novo usuário");
@@ -133,11 +137,13 @@ namespace Biblioteca.Sistema
             {
                 Console.WriteLine("\n✗ Credenciais inválidas ou usuário inativo!");
             }
+            Thread.Sleep(2000);
         }
 
 
         private void RegistrarUsuario()
         {
+            Console.Clear();
             Console.WriteLine("\n═══ REGISTRO DE USUÁRIO ═══");
             Console.Write("Nome: ");
             string nome = Console.ReadLine();
@@ -170,10 +176,12 @@ namespace Biblioteca.Sistema
             {
                 Console.WriteLine("\n✗ Erro ao registrar usuário. Username pode já existir.");
             }
+            MenuContinuar();
         }
 
         private void MostrarMenuPrincipal()
         {
+            Console.Clear();
             Console.WriteLine($"\n═══ MENU PRINCIPAL - {usuarioLogado.Nome} ({usuarioLogado.Tipo}) ═══");
 
             switch (usuarioLogado.Tipo)
@@ -181,7 +189,7 @@ namespace Biblioteca.Sistema
                 case TipoUsuario.Cliente:
                     MenuCliente();
                     break;
-                case TipoUsuario.Recepcao:
+                case TipoUsuario.Rececao:
                     MenuRecepcao();
                     break;
                 case TipoUsuario.Admin:
@@ -308,6 +316,7 @@ namespace Biblioteca.Sistema
         // Métodos de Gestão de Livros
         private void MenuGestaoLivros()
         {
+            Console.Clear();
             Console.WriteLine("\n═══ GESTÃO DE LIVROS ═══");
             Console.WriteLine("1. Adicionar livro");
             Console.WriteLine("2. Editar livro");
@@ -335,6 +344,7 @@ namespace Biblioteca.Sistema
 
         private void AdicionarLivro()
         {
+            Console.Clear();
             Console.WriteLine("\n═══ ADICIONAR LIVRO ═══");
             Console.Write("Título: ");
             string titulo = Console.ReadLine();
@@ -351,10 +361,12 @@ namespace Biblioteca.Sistema
             repoLivros.Inserir(livro);
 
             Console.WriteLine("\n✓ Livro adicionado com sucesso!");
+            MenuContinuar();
         }
 
         private void EditarLivro()
         {
+            Console.Clear();
             Console.Write("\nID do livro para editar: ");
             int id = int.Parse(Console.ReadLine());
 
@@ -380,10 +392,12 @@ namespace Biblioteca.Sistema
 
             repoLivros.Atualizar(livro);
             Console.WriteLine("\n✓ Livro atualizado com sucesso!");
+            MenuContinuar();
         }
 
         private void RemoverLivro()
         {
+            Console.Clear();
             Console.Write("\nID do livro para remover: ");
             int id = int.Parse(Console.ReadLine());
 
@@ -405,12 +419,14 @@ namespace Biblioteca.Sistema
             {
                 repoLivros.Eliminar(id);
                 Console.WriteLine("\n✓ Livro removido com sucesso!");
+                MenuContinuar();
             }
         }
 
         // Métodos de Gestão de Usuários
         private void MenuGestaoUsuarios()
         {
+            Console.Clear();
             Console.WriteLine("\n═══ GESTÃO DE USUÁRIOS ═══");
             Console.WriteLine("1. Listar todos os usuários");
             Console.WriteLine("2. Editar usuário");
@@ -438,6 +454,7 @@ namespace Biblioteca.Sistema
 
         private void EditarUsuario()
         {
+            Console.Clear();
             Console.Write("\nID do usuário para editar: ");
             int id = int.Parse(Console.ReadLine());
 
@@ -463,10 +480,12 @@ namespace Biblioteca.Sistema
 
             repoUsuarios.Atualizar(usuario);
             Console.WriteLine("\n✓ Usuário atualizado com sucesso!");
+            MenuContinuar();
         }
 
         private void ToggleUsuarioAtivo()
         {
+            Console.Clear();
             Console.Write("\nID do usuário: ");
             int id = int.Parse(Console.ReadLine());
 
@@ -482,11 +501,13 @@ namespace Biblioteca.Sistema
 
             string status = usuario.Ativo ? "ativado" : "desativado";
             Console.WriteLine($"\n✓ Usuário {status} com sucesso!");
+            MenuContinuar();
         }
 
         // Métodos de Empréstimos
         private void CriarEmprestimo()
         {
+            Console.Clear();
             Console.WriteLine("\n═══ CRIAR EMPRÉSTIMO ═══");
             Console.Write("ID do usuário: ");
             int idUsuario = int.Parse(Console.ReadLine());
@@ -503,10 +524,12 @@ namespace Biblioteca.Sistema
             {
                 Console.WriteLine($"\n✗ {resultado.mensagem}");
             }
+            MenuContinuar();
         }
 
         private void DevolverLivro()
         {
+            Console.Clear();
             Console.WriteLine("\n═══ DEVOLVER LIVRO ═══");
             ListarEmprestimosAtivos();
             Console.Write("\nID do empréstimo: ");
@@ -519,38 +542,45 @@ namespace Biblioteca.Sistema
                 Console.WriteLine($"\n✓ {resultado.mensagem}");
                 if (resultado.multa > 0)
                 {
-                    Console.WriteLine($"Multa aplicada: €{resultado.multa:F2}");
+                    Console.WriteLine($"Multa aplicada: {resultado.multa:F2} Euros");
                 }
             }
             else
             {
                 Console.WriteLine($"\n✗ {resultado.mensagem}");
             }
+            MenuContinuar();
         }
 
         // Métodos de Listagem
         private void ListarTodosLivros()
         {
+            Console.Clear();
             var livros = repoLivros.ObterTodos();
             Console.WriteLine("\n═══ TODOS OS LIVROS ═══");
             foreach (var livro in livros)
             {
                 livro.ExibirInformacoes();
             }
+            MenuContinuar();
         }
 
         private void ListarLivrosDisponiveis()
         {
+            Console.Clear();
             var livros = repoLivros.ObterDisponiveis();
             Console.WriteLine("\n═══ LIVROS DISPONÍVEIS ═══");
             foreach (var livro in livros)
             {
                 livro.ExibirInformacoes();
             }
+            MenuContinuar();
         }
 
         private void MenuListarLivros()
         {
+            Console.Clear();
+            Console.WriteLine("═══ LISTAR LIVROS ═══");
             Console.WriteLine("\n1. Livros disponíveis");
             Console.WriteLine("2. Livros emprestados");
             Console.WriteLine("3. Todos os livros");
@@ -572,26 +602,31 @@ namespace Biblioteca.Sistema
 
         private void ListarLivrosEmprestados()
         {
+            Console.Clear();
             var livros = repoLivros.ObterEmprestados();
             Console.WriteLine("\n═══ LIVROS EMPRESTADOS ═══");
             foreach (var livro in livros)
             {
                 livro.ExibirInformacoes();
             }
+            MenuContinuar();
         }
 
         private void ListarTodosUsuarios()
         {
+            Console.Clear();
             var usuarios = repoUsuarios.ObterTodos();
             Console.WriteLine("\n═══ TODOS OS USUÁRIOS ═══");
             foreach (var usuario in usuarios)
             {
                 usuario.ExibirInformacoes();
             }
+            MenuContinuar();
         }
 
         private void ListarUsuariosComMultas()
         {
+            Console.Clear();
             var usuarios = repoUsuarios.ObterComMultas();
             Console.WriteLine("\n═══ USUÁRIOS COM MULTAS ═══");
             foreach (var usuario in usuarios)
@@ -609,10 +644,12 @@ namespace Biblioteca.Sistema
                 }
                 Console.WriteLine();
             }
+            MenuContinuar();
         }
 
         private void ListarEmprestimosAtivos()
         {
+            Console.Clear();
             var emprestimos = repoEmprestimos.ObterAtivos();
             Console.WriteLine("\n═══ EMPRÉSTIMOS ATIVOS ═══");
             foreach (var emprestimo in emprestimos)
@@ -620,10 +657,12 @@ namespace Biblioteca.Sistema
                 emprestimo.ExibirInformacoes();
                 Console.WriteLine();
             }
+            MenuContinuar();
         }
 
         private void ListarEmprestimosAtrasados()
         {
+            Console.Clear();
             var emprestimos = repoEmprestimos.ObterAtrasados();
             Console.WriteLine("\n═══ EMPRÉSTIMOS ATRASADOS ═══");
             foreach (var emprestimo in emprestimos)
@@ -631,10 +670,12 @@ namespace Biblioteca.Sistema
                 emprestimo.ExibirInformacoes();
                 Console.WriteLine();
             }
+            MenuContinuar();
         }
 
         private void ListarEmprestimosUsuario(int idUsuario)
         {
+            Console.Clear();
             var emprestimos = repoEmprestimos.ObterPorUsuario(idUsuario);
             Console.WriteLine("\n═══ MEUS EMPRÉSTIMOS ═══");
             foreach (var emprestimo in emprestimos)
@@ -642,11 +683,13 @@ namespace Biblioteca.Sistema
                 emprestimo.ExibirInformacoes();
                 Console.WriteLine();
             }
+            MenuContinuar();
         }
 
         // Métodos auxiliares
         private void PesquisarLivros()
         {
+            Console.Clear();
             Console.Write("\nTermo de pesquisa (título ou autor): ");
             string termo = Console.ReadLine().ToLower();
 
@@ -659,10 +702,13 @@ namespace Biblioteca.Sistema
             {
                 livro.ExibirInformacoes();
             }
+            MenuContinuar();
         }
 
         private void PesquisarUsuario()
         {
+            Console.Clear();
+
             Console.Write("\nTermo de pesquisa (nome ou email): ");
             string termo = Console.ReadLine().ToLower();
 
@@ -689,13 +735,16 @@ namespace Biblioteca.Sistema
                 }
                 Console.WriteLine();
             }
+            MenuContinuar();
         }
 
         private void MostrarMultasUsuario()
         {
+            Console.Clear();
+
             var usuario = repoUsuarios.ObterPorId(usuarioLogado.Id);
             Console.WriteLine($"\n═══ MINHAS MULTAS ═══");
-            Console.WriteLine($"Total de multas: €{usuario.MultaTotal:F2}");
+            Console.WriteLine($"Total de multas: {usuario.MultaTotal:F2} Euros");
 
             var emprestimos = repoEmprestimos.ObterPorUsuario(usuarioLogado.Id);
             var comMulta = emprestimos.Where(e => e.MultaAplicada > 0).ToList();
@@ -705,13 +754,15 @@ namespace Biblioteca.Sistema
                 Console.WriteLine("\nDetalhes das multas:");
                 foreach (var emp in comMulta)
                 {
-                    Console.WriteLine($"- {emp.Livro.Titulo}: €{emp.MultaAplicada:F2}");
+                    Console.WriteLine($"- {emp.Livro.Titulo}: Euros{emp.MultaAplicada:F2}");
                 }
             }
+            MenuContinuar();
         }
 
         private void MenuGestaoEmprestimos()
         {
+            Console.Clear();
             Console.WriteLine("\n═══ GESTÃO DE EMPRÉSTIMOS ═══");
             Console.WriteLine("1. Listar todos os empréstimos");
             Console.WriteLine("2. Empréstimos ativos");
@@ -739,6 +790,8 @@ namespace Biblioteca.Sistema
 
         private void ListarTodosEmprestimos()
         {
+            Console.Clear();
+
             var emprestimos = repoEmprestimos.ObterTodos();
             Console.WriteLine("\n═══ TODOS OS EMPRÉSTIMOS ═══");
             foreach (var emprestimo in emprestimos)
@@ -746,10 +799,13 @@ namespace Biblioteca.Sistema
                 emprestimo.ExibirInformacoes();
                 Console.WriteLine();
             }
+            MenuContinuar();
         }
 
         private void ListarHistoricoEmprestimos()
         {
+            Console.Clear();
+
             var emprestimos = repoEmprestimos.ObterTodos()
                 .Where(e => e.Status == StatusEmprestimo.Devolvido)
                 .OrderByDescending(e => e.DataDevolucao)
@@ -761,10 +817,13 @@ namespace Biblioteca.Sistema
                 emprestimo.ExibirInformacoes();
                 Console.WriteLine();
             }
+            MenuContinuar();
         }
 
         private void MenuRelatorios()
         {
+            Console.Clear();
+
             Console.WriteLine("\n═══ RELATÓRIOS ═══");
             Console.WriteLine("1. Livros mais emprestados");
             Console.WriteLine("2. Usuários mais ativos");
@@ -792,6 +851,8 @@ namespace Biblioteca.Sistema
 
         private void RelatorioLivrosMaisEmprestados()
         {
+            Console.Clear();
+
             var emprestimos = repoEmprestimos.ObterTodos();
             var estatisticas = emprestimos
                 .GroupBy(e => e.IdLivro)
@@ -809,10 +870,13 @@ namespace Biblioteca.Sistema
             {
                 Console.WriteLine($"{stat.Livro.Titulo} - {stat.Quantidade} empréstimos");
             }
+            MenuContinuar();
         }
 
         private void RelatorioUsuariosMaisAtivos()
         {
+            Console.Clear();
+
             var emprestimos = repoEmprestimos.ObterTodos();
             var estatisticas = emprestimos
                 .GroupBy(e => e.IdUsuario)
@@ -830,25 +894,31 @@ namespace Biblioteca.Sistema
             {
                 Console.WriteLine($"{stat.Usuario.Nome} - {stat.Quantidade} empréstimos");
             }
+            MenuContinuar();
         }
 
         private void RelatorioMultas()
         {
+            Console.Clear();
+
             var usuarios = repoUsuarios.ObterComMultas();
             decimal totalMultas = usuarios.Sum(u => u.MultaTotal);
 
             Console.WriteLine("\n═══ RELATÓRIO DE MULTAS ═══");
-            Console.WriteLine($"Total arrecadado em multas: €{totalMultas:F2}");
+            Console.WriteLine($"Total arrecadado em multas: {totalMultas:F2} Euros");
             Console.WriteLine($"Usuários com multas: {usuarios.Count}");
             Console.WriteLine("\nDetalhes:");
             foreach (var usuario in usuarios.Take(10))
             {
-                Console.WriteLine($"{usuario.Nome}: €{usuario.MultaTotal:F2}");
+                Console.WriteLine($"{usuario.Nome}: {usuario.MultaTotal:F2} Euros");
             }
+            MenuContinuar();
         }
 
         private void RelatorioEmprestimosPorPeriodo()
         {
+            Console.Clear();
+
             Console.Write("\nData inicial (dd/MM/yyyy): ");
             DateTime dataInicial = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy", null);
             Console.Write("Data final (dd/MM/yyyy): ");
@@ -863,7 +933,13 @@ namespace Biblioteca.Sistema
             Console.WriteLine($"Empréstimos ativos: {emprestimos.Count(e => e.Status == StatusEmprestimo.Ativo)}");
             Console.WriteLine($"Empréstimos devolvidos: {emprestimos.Count(e => e.Status == StatusEmprestimo.Devolvido)}");
             Console.WriteLine($"Empréstimos atrasados: {emprestimos.Count(e => e.Status == StatusEmprestimo.Atrasado)}");
+            MenuContinuar();
         }
-       
+        private void MenuContinuar()
+        {
+            Console.WriteLine("\n═══ CLIQUE PARA VOLTAR ═══");
+            Console.ReadLine();
+
+        }
     }
 }

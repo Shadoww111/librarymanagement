@@ -54,11 +54,11 @@ namespace Biblioteca.Modelos
 
             Console.WriteLine($"ID: {Id} | Usuário: {Usuario?.Nome} | Livro: {Livro?.Titulo}");
             Console.WriteLine($"Data Empréstimo: {DataEmprestimo:dd/MM/yyyy} | Devolução Prevista: {DataPrevistaDevolucao:dd/MM/yyyy}");
-            Console.WriteLine($"Status: {statusTexto} | Multa: €{MultaAplicada:F2}");
+            Console.WriteLine($"Status: {statusTexto} | Multa: {MultaAplicada:F2} Euros");
 
             if (EstaAtrasado())
             {
-                Console.WriteLine($"*** ATRASADO - Multa atual: €{CalcularMulta():F2} ***");
+                Console.WriteLine($"*** ATRASADO - Multa atual: {CalcularMulta():F2} Euros ***");
             }
         }
     }

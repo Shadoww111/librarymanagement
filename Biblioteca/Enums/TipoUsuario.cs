@@ -9,7 +9,7 @@ namespace Biblioteca.Enums
     public enum TipoUsuario
     {
         Cliente = 1,
-        Recepcao = 2,
+        Rececao = 2,
         Admin = 3
     }
 
