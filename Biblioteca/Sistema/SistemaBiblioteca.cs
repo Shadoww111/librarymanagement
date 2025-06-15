@@ -754,7 +754,7 @@ namespace Biblioteca.Sistema
                 Console.WriteLine("\nDetalhes das multas:");
                 foreach (var emp in comMulta)
                 {
-                    Console.WriteLine($"- {emp.Livro.Titulo}: Euros{emp.MultaAplicada:F2}");
+                    Console.WriteLine($"- {emp.Livro.Titulo}: {emp.MultaAplicada:F2} Euros");
                 }
             }
             MenuContinuar();
