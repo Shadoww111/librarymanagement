@@ -1,98 +1,104 @@
+# 📚 Sistema de Gestão de Biblioteca
 
-# 📚 Sistema de Gestão de Biblioteca (C# Console + SQL Server)
+Este é um sistema de gestão de biblioteca desenvolvido em C# utilizando o paradigma de Programação Orientada a Objetos (POO), com persistência de dados em SQL Server. A aplicação permite gerir livros, utilizadores e empréstimos, com diferentes perfis de acesso: Cliente, Receção e Administrador.
 
-Este é um projeto de aplicação de consola em C#, com ligação a uma base de dados SQL Server, para gerir uma biblioteca. É baseado em princípios de **Programação Orientada a Objetos (POO)**.
+---
 
-## ✅ Funcionalidades
+## ⚙️ Funcionalidades
 
-- 📖 **Gestão de livros**
-  - Adicionar livros
-  - Listar livros
-  - Verificar disponibilidade
+- ✅ Registo e autenticação de utilizadores
+- ✅ Diferentes permissões por tipo de utilizador
+- ✅ Gestão de livros (CRUD)
+- ✅ Gestão de empréstimos com controlo de devoluções e multas
+- ✅ Relatórios e estatísticas (parcialmente implementado)
+- ✅ Atualização automática de empréstimos atrasados
 
-- 👤 **Gestão de utilizadores**
-  - Adicionar utilizadores
-  - Listar utilizadores
-  - Tipos: `Cliente`, `Receção`, `Admin`
+---
 
-- 🔁 **Empréstimos**
-  - Criar empréstimos
-  - Validação da idade mínima e disponibilidade
-  - Data de empréstimo guardada
-
-- 📥 **Devoluções**
-  - Registo de devolução de livros
-  - Multa de 1€ por dia após 5 dias
-
-- 🔎 **Listagens**
-  - Livros emprestados com nome do utilizador
-  - Utilizadores em incumprimento com o valor da multa
-
-## 🗃️ Estrutura do Projeto
+## 🧱 Estrutura do Projeto
 
 ```
-📁 BibliotecaConsoleApp/
-├── Program.cs               # Interface no terminal (menu)
-├── Livro.cs
-├── Usuario.cs
-├── Emprestimo.cs
-├── ConexaoBD.cs
-├── LivroDAL.cs
-├── UsuarioDAL.cs
-└── EmprestimoDAL.cs
-└── README.md
+/SistemaGestaBiblioteca
+│
+├── Enums/                # Tipos de enumeração usados no sistema
+├── Modelos/              # Classes de domínio (Livro, Usuario, etc.)
+├── Repositorios/         # Acesso a dados e consultas SQL
+├── Servicos/             # Regras de negócio e validações
+├── Data/                 # Ligação e configuração da base de dados
+├── Sistema/              # Sistema principal e menus
+├── Program.cs            # Ponto de entrada da aplicação
+├── README.md             # Este ficheiro
 ```
 
-## 🛠️ Tecnologias Utilizadas
+---
 
-- 💻 Linguagem: **C# (.NET)**
-- 💾 Base de Dados: **SQL Server**
-- 🧱 Paradigma: **Programação Orientada a Objetos**
+## 💠 Tecnologias
 
-## 🔌 Configuração da Base de Dados
+- 💻 **Linguagem:** C# (.NET 6+ recomendado)
+- 💄️ **Base de Dados:** SQL Server
+- 🧪 **ORM:** Acesso direto com `SqlConnection` e `SqlCommand`
+- 🧐 **Paradigmas:** Programação Orientada a Objetos
 
-Executa o seguinte script no SQL Server Management Studio:
+---
 
-```sql
-CREATE DATABASE BibliotecaDB;
-GO
+## 📃 Requisitos
 
-USE BibliotecaDB;
+- .NET SDK 6.0 ou superior
+- SQL Server Local ou Remoto (ex: `localhost` com autenticação Windows)
+- Visual Studio, VS Code ou outro editor C#
 
-CREATE TABLE Usuarios (
-    UsuarioID INT PRIMARY KEY IDENTITY(1,1),
-    Nome NVARCHAR(100) NOT NULL,
-    Idade INT NOT NULL,
-    Tipo NVARCHAR(50) NOT NULL, -- Cliente, Rececao, Admin
-    Password NVARCHAR(100) NOT NULL
-);
-
-CREATE TABLE Livros (
-    LivroID INT PRIMARY KEY IDENTITY(1,1),
-    Titulo NVARCHAR(100) NOT NULL,
-    Autor NVARCHAR(100) NOT NULL,
-    FaixaEtaria INT NOT NULL,
-    Disponivel BIT NOT NULL DEFAULT 1
-);
-
-CREATE TABLE Emprestimos (
-    EmprestimoID INT PRIMARY KEY IDENTITY(1,1),
-    LivroID INT NOT NULL,
-    UsuarioID INT NOT NULL,
-    DataEmprestimo DATE NOT NULL,
-    DataDevolucao DATE NULL,
-
-    CONSTRAINT FK_Emprestimos_Livros FOREIGN KEY (LivroID) REFERENCES Livros(LivroID),
-    CONSTRAINT FK_Emprestimos_Usuarios FOREIGN KEY (UsuarioID) REFERENCES Usuarios(UsuarioID)
-);
-```
+---
 
 ## 🚀 Como Executar
 
-1. Abre o projeto no Visual Studio como aplicação de consola (.NET).
-2. Garante que tens a base de dados `BibliotecaDB` criada e com as tabelas.
-3. Altera a `ConnectionString` se necessário (ficheiro `ConexaoBD.cs`).
-4. Executa o projeto e usa o menu no terminal para interagir.
+1. **Clona o projeto:**
+
+```bash
+git clone https://github.com/seu-utilizador/sistema-biblioteca.git
+cd sistema-biblioteca
+```
+
+2. **Configura a connection string:**
+
+Edita o ficheiro `Program.cs` com a tua connection string do SQL Server:
+
+```csharp
+string connectionString = @"Server=localhost;Database=BibliotecaDB;Trusted_Connection=True;";
+```
+
+3. **Executa o projeto:**
+
+```bash
+dotnet run
+```
+
+> O sistema irá automaticamente criar a base de dados e as tabelas se não existirem.
 
 ---
+
+## 👤 Tipos de Utilizador
+
+| Tipo     | Acesso                                                      |
+| -------- | ----------------------------------------------------------- |
+| Cliente  | Ver livros, ver próprios empréstimos e multas               |
+| Recepção | Criar/devolver empréstimos, gerir livros e ver utilizadores |
+| Admin    | Acesso completo (administração de dados e relatórios)       |
+
+---
+
+## 📝 Conta de Admin Padrão
+
+Na primeira execução, será criado automaticamente um utilizador admin:
+
+```
+Username: admin
+Password: admin123
+```
+
+
+---
+
+## 📄 Licença
+
+Este projeto é livre para fins educativos. Personaliza e expande conforme necessário!
 
