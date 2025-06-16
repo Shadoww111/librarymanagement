@@ -47,7 +47,7 @@ Este é um sistema de gestão de biblioteca desenvolvido em **C#** em **Console*
 1. **Clonar o projeto**
 
 ```bash
-git clone https://github.com/seu-usuario/sistema-biblioteca.git
+git clone https://github.com/o-seu-usuario/sistema-biblioteca.git
 cd sistema-biblioteca
 ```
 
