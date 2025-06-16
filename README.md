@@ -1,7 +1,7 @@
 
 # 📚 Sistema de Gestão de Biblioteca
 
-Este é um sistema de gestão de biblioteca desenvolvido em **C#** com **WinForms Console** e acesso a **SQL Server**, utilizando **Programação Orientada a Objetos (POO)**. O sistema permite gerir livros, utilizadores e empréstimos, com diferentes perfis de utilizador (Cliente, Receção, Administrador).
+Este é um sistema de gestão de biblioteca desenvolvido em **C#** em **Console** e acesso a **SQL Server**, utilizando **Programação Orientada a Objetos (POO)**. O sistema permite gerir livros, utilizadores e empréstimos, com diferentes perfis de utilizador (Cliente, Receção, Administrador).
 
 ---
 
